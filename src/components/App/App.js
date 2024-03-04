@@ -10,10 +10,12 @@ function App() {
   const addOrders = (newOrder) => {
     setOrders(prevOrders => [...prevOrders, newOrder])
   }
-  
+
   useEffect(() => {
-    getOrders().catch((err) => console.error("Error fetching:", err));
-  });
+    getOrders()
+    .then(data => setOrders(data.orders))
+    .catch((err) => console.error("Error fetching:", err));
+  }, []);
 
   return (
     <main className="App">
