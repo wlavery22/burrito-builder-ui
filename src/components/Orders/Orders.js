@@ -7,11 +7,11 @@ const Orders = ({ orders }) => {
   const orderEls = orders.map((order) => {
     // const { id, name, ingredients} = order
     return (
-      <div className="order">
+      <div className="order" key={order.id}>
         <h3>{order.name}</h3>
         <ul className="ingredient-list">
           {order.ingredients.map((ingredient) => {
-            return <li>{ingredient}</li>;
+            return <li key={ingredient}>{ingredient}</li>;
           })}
         </ul>
       </div>

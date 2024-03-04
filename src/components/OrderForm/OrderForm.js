@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./OrderForm.css";
 
 function OrderForm({ addOrders }) {
   const [name, setName] = useState("");
@@ -6,8 +7,13 @@ function OrderForm({ addOrders }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    addOrders(e)
+    const newOrder = {
+      name: name,
+      ingredients: ingredients
+    };
+    addOrders(newOrder);
     clearInputs();
+ 
   }
 
   function clearInputs() {
@@ -29,18 +35,22 @@ function OrderForm({ addOrders }) {
     "cilantro",
     "sour cream",
   ];
+
   const ingredientButtons = possibleIngredients.map((ingredient) => {
     return (
       <button
         key={ingredient}
         name={ingredient}
-        onClick={(e) => setIngredients(e)}
+        onClick={() => {
+          setIngredients(prevIngredients => [...prevIngredients, ingredient]); 
+          console.log("INGREDIENT:", ingredient)
+        }}
       >
         {ingredient}
       </button>
     );
-  });
-
+  }); 
+  
   return (
     <form>
       <input
@@ -48,9 +58,13 @@ function OrderForm({ addOrders }) {
         placeholder="Name"
         name="name"
         value={name}
-        onChange={(e) => setName(e)}
-      />
+        onChange={(e) => {
+          setName(e.target.value)
+          console.log(e.target.value)
+        }
+      }
 
+      />
       {ingredientButtons}
 
       <p>Order: {ingredients.join(", ") || "Nothing selected"}</p>

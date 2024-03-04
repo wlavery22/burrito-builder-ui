@@ -7,10 +7,10 @@ import OrderForm from "../../components/OrderForm/OrderForm";
 function App() {
   const [orders, setOrders] = useState([]); 
 
-  const addOrders = () => {
-    setOrders()
+  const addOrders = (newOrder) => {
+    setOrders(prevOrders => [...prevOrders, newOrder])
   }
-
+  
   useEffect(() => {
     getOrders().catch((err) => console.error("Error fetching:", err));
   });
