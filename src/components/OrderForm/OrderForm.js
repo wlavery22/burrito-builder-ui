@@ -1,21 +1,24 @@
 import { useState } from "react";
 import "./OrderForm.css";
 
-function OrderForm({ addOrders }) {
+function OrderForm({ addOrders, postOrder }) {
   const [name, setName] = useState("");
   const [ingredients, setIngredients] = useState([]);
 
   function handleSubmit(e) {
     e.preventDefault();
-    const newOrder = {
-      name: name,
-      ingredients: ingredients
-    };
-    addOrders(newOrder);
-    clearInputs();
- 
-  }
+    if (name.length === 1 && ingredients.length >= 1) {
+      const newOrder = {
+        name: name,
+        ingredients: ingredients
+      };
+      addOrders(newOrder);
+      postOrder(newOrder);
+      clearInputs();
 
+    } 
+  }
+   
   function clearInputs() {
     setName("");
     setIngredients([]);
