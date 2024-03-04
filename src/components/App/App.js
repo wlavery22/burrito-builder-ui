@@ -5,6 +5,8 @@ import Orders from "../../components/Orders/Orders";
 import OrderForm from "../../components/OrderForm/OrderForm";
 
 function App() {
+  const [orders, setOrders] = useState([]); 
+
   useEffect(() => {
     getOrders().catch((err) => console.error("Error fetching:", err));
   });
