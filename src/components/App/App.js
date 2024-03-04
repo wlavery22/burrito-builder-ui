@@ -7,6 +7,10 @@ import OrderForm from "../../components/OrderForm/OrderForm";
 function App() {
   const [orders, setOrders] = useState([]); 
 
+  const addOrders = () => {
+    setOrders()
+  }
+
   useEffect(() => {
     getOrders().catch((err) => console.error("Error fetching:", err));
   });
@@ -15,7 +19,7 @@ function App() {
     <main className="App">
       <header>
         <h1>Burrito Builder</h1>
-        <OrderForm />
+        <OrderForm addOrders={addOrders} />
       </header>
 
       <Orders orders={orders} />
