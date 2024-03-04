@@ -1,8 +1,11 @@
 import React from "react";
 import "./Orders.css";
+import Order from '../Order/Order';
 
-const Orders = (props) => {
-  const orderEls = props.orders.map((order) => {
+const Orders = ({ orders }) => {
+  console.log("orders:=====", orders);
+  const orderEls = orders.map((order) => {
+    // const { id, name, ingredients} = order
     return (
       <div className="order">
         <h3>{order.name}</h3>
@@ -16,7 +19,10 @@ const Orders = (props) => {
   });
 
   return (
-    <section>{orderEls.length ? orderEls : <p>No orders yet!</p>}</section>
+    <section>
+      {orderEls.length ? orderEls : <p>No orders yet!</p>}
+    </section>
+
   );
 };
 

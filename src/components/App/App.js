@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import { getOrders } from "../../apiCalls";
 import Orders from "../../components/Orders/Orders";
@@ -18,9 +18,11 @@ function App() {
         <OrderForm />
       </header>
 
-      <Orders orders={"Here is where orders go"} />
+      <Orders orders={orders} />
     </main>
   );
 }
 
 export default App;
+
+
