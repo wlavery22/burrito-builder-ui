@@ -41,7 +41,8 @@ function OrderForm({ addOrders }) {
       <button
         key={ingredient}
         name={ingredient}
-        onClick={() => {
+        onClick={(e) => {
+          e.preventDefault();
           setIngredients(prevIngredients => [...prevIngredients, ingredient]); 
           console.log("INGREDIENT:", ingredient)
         }}
