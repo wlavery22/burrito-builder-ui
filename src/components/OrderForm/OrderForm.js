@@ -7,17 +7,18 @@ function OrderForm({ addOrders, postOrder }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (name.length === 1 && ingredients.length >= 1) {
+    // if (name.length === 1 && ingredients.length >= 1) {
       const newOrder = {
         name: name,
-        ingredients: ingredients
+        ingredients: ingredients,
+        id: Date.now()
       };
       addOrders(newOrder);
       postOrder(newOrder);
       clearInputs();
 
     } 
-  }
+  
    
   function clearInputs() {
     setName("");
@@ -46,7 +47,9 @@ function OrderForm({ addOrders, postOrder }) {
         name={ingredient}
         onClick={(e) => {
           e.preventDefault();
-          setIngredients(prevIngredients => [...prevIngredients, ingredient]); 
+          // setIngredients(ingredient); 
+          setIngredients(prevIngredients => [...prevIngredients, ingredient]);
+
           console.log("INGREDIENT:", ingredient)
         }}
       >
