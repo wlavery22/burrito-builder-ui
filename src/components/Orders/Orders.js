@@ -10,13 +10,17 @@ const Orders = ({ orders }) => {
       <div className="order" key={order.id}>
         <h3>{order.name}</h3>
         <ul className="ingredient-list">
-          {order.ingredients.map((ingredient) => {
-            return <li key={ingredient}>{ingredient}</li>;
-          })}
+        {order.ingredients && order.ingredients.length > 0 ? (
+            order.ingredients.map((ingredient) => {
+              return <li key={ingredient}>{ingredient}</li>;
+            })
+          ) : (
+            <li>No ingredients selected</li>
+          )}
         </ul>
       </div>
     );
-  });
+ });
 
   return (
     <section>

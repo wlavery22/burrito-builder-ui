@@ -35,6 +35,8 @@ function App() {
     }
   }
 
+// data shape: {name: <String>, ingredients: <Array of Strings>}
+
   return (
     <main className="App">
       <header>
